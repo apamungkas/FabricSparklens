@@ -20,15 +20,16 @@ package com.qubole.sparklens.helper
 import org.apache.hadoop.conf.Configuration
 import org.apache.spark.SparkConf
 import org.apache.spark.deploy.SparkHadoopUtil
+import org.apache.spark.sql.SparkSession
 
 object HDFSConfigHelper {
-
-   def getHadoopConf(sparkConfOptional:Option[SparkConf]): Configuration = {
+  def getHadoopConf(sparkConfOptional: Option[SparkConf]): Configuration = {
     if (sparkConfOptional.isDefined) {
-      SparkHadoopUtil.get.newConfiguration(sparkConfOptional.get)
-    }else {
-      val sparkConf = new SparkConf()
-      SparkHadoopUtil.get.newConfiguration(sparkConf)
+      val spark = SparkSession.builder.config(sparkConfOptional.get).getOrCreate()
+      spark.sparkContext.hadoopConfiguration
+    } else {
+      val spark = SparkSession.builder.getOrCreate()
+      spark.sparkContext.hadoopConfiguration
     }
   }
 }

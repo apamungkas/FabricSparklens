@@ -1,18 +1,28 @@
 name := "sparklens"
 organization := "com.qubole"
 
-scalaVersion := "2.11.8"
+scalaVersion := "2.12.0"
 
-crossScalaVersions := Seq("2.10.6", "2.11.8")
+crossScalaVersions := Seq("2.10.6", "2.12.0")
 
-spName := "qubole/sparklens"
+// spName := "qubole/sparklens"
 
-sparkVersion := "2.0.0"
+// sparkVersion := "2.0.0"
 
-spAppendScalaVersion := true
+// spAppendScalaVersion := true
+
+val spName = "qubole/sparklens"
+
+val sparkVersion = "3.0.0"
+
+val spAppendScalaVersion = true
 
 
-libraryDependencies += "org.apache.spark" %% "spark-core" % sparkVersion.value % "provided"
+// libraryDependencies += "org.apache.spark" %% "spark-core" % sparkVersion.value % "provided"
+
+libraryDependencies += "org.apache.spark" %% "spark-core" % sparkVersion % "provided"
+
+libraryDependencies += "org.apache.spark" %% "spark-sql" % "3.0.0"
 
 libraryDependencies +=  "org.apache.hadoop" % "hadoop-client" % "2.6.5" % "provided"
 
