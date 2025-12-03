@@ -6,3 +6,8 @@ Modify build.sbt
 Modify \project\plugins.sbt
 Modify \src\main\scala\com\qubole\sparklens\QuboleJobListener.scala
 Modify \src\main\scala\com\qubole\sparklens\helper\HDFSConfigHelper.scala
+
+sbt compile
+sbt package
+
+The .jar file is available at \FabricSparklens\target\scala-2.12\sparklens_2.12-0.3.2.jar
